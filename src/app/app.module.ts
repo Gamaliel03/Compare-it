@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { MasBuscadosComponent } from './mas-buscados/mas-buscados.component';
 import { FarmaciasComponent } from './farmacias/farmacias.component';
 
+import { AngularFireModule} from '@angular/fire';
+import { environment} from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,8 @@ import { FarmaciasComponent } from './farmacias/farmacias.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
