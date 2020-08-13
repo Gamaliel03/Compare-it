@@ -1,1 +1,16 @@
-<p>farmacias works!</p>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-sm-3" *ngFor="let item of listaFarmacias"> 
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.nombreFarmacia }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">2451-1800</h6>
+                  <p class="card-text">Colonia Sensunapan, Casa #3</p>
+                  
+                </div>
+              </div>
+            
+
+        </div>
+    </div>
+</div>
