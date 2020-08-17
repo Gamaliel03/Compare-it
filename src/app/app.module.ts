@@ -11,6 +11,9 @@ import { FarmaciasComponent } from './farmacias/farmacias.component';
 
 import { AngularFireModule} from '@angular/fire';
 import { environment} from '../environments/environment';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BusquedaComponent } from './busqueda/busqueda.component'
+
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { environment} from '../environments/environment';
     EncabezadoComponent,
     HomeComponent,
     MasBuscadosComponent,
-    FarmaciasComponent
+    FarmaciasComponent,
+    BusquedaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

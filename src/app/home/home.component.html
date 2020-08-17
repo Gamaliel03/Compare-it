@@ -1,1 +1,20 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                <img src="assets/82.jpeg" alt="Icono" style="width: 100%; height: auto;">
+                <form class="form-inline" [formGroup]="formularioBuscar">
+                    <div class="container form-group">
+                        <input formControlName="medicamento" class="form-control mr-sm-2" size="45" 
+                        type="search" placeholder="Busca tu medicamento" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" 
+                        [disabled]="!formularioBuscar.valid"
+                        type="submit" [routerLink]="{'/busqueda', formularioBuscar.value.medicamento}">
+                            Buscar 
+                        </button>               
+                    </div>
+                </form>
+            </div>
+        </div>   
+    </div>
+</div>
