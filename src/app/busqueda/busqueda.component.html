@@ -1,1 +1,18 @@
-<p>{{ busqueda }}</p>
+
+
+<!-- Aparecerá si encuentra resultados -->
+<div class="container class mt-3">
+    <h2>{{ busqueda }}</h2>
+    <h4>Precios</h4>
+    <div class="alert alert-info" role="alert">
+        Los precios visualizados son por cajas
+    </div>
+
+    <div class="row">
+        <div class="col sm-3" *ngForm="let item of detalles" >
+            <p>Farmacia:  {{ item.nombreFarmacia }}</p>
+            <p>Precio:  {{ item.Precio | currency }}</p>
+
+        </div>
+    </div>
+</div>
