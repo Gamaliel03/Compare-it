@@ -1,7 +1,25 @@
-
+<!--Aparecera cuando no se encuentren resultados-->
+<div class="container mt-3" *ngIf="detalles.length < 1">
+    <div class="row">
+        <div class="col-sm-4" style="text-align: center;">
+            <div class="col-sm-12">
+                <h3>Medicamento no encontrado</h3>
+                <br>
+                <p>Regresa a la página de inicio y escribe el nombre correcto de los medicamento</p>
+                <button class="btn btn-primary" routerLink="/">
+                    Regresar al inicio
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <img src="assets/Vacionuevo.jpg"
+             alt="Imagen cuando el producto no se encuentre" style="width: 70%; height: auto;">
+        </div>
+    </div>
+</div>
 
 <!-- Aparecerá si encuentra resultados -->
-<div class="container class mt-3">
+<div class="container mt-3" *ngIf="detalles.length > 0">
     <h2>{{ busqueda }}</h2>
     <h4>Precios</h4>
     <div class="alert alert-info" role="alert">
@@ -9,10 +27,29 @@
     </div>
 
     <div class="row">
-        <div class="col sm-3" *ngForm="let item of detalles" >
-            <p>Farmacia:  {{ item.nombreFarmacia }}</p>
-            <p>Precio:  {{ item.Precio | currency }}</p>
+        <div class="col-sm-3" *ngFor="let item of detalles; let indice = index">
+           
+        <!--Se va a mostrar cuando el índice sea 0, es decir será el producto más barato-->
+            <div class="card" style="width: 18rem;" *ngIf="indice == 0">
+                <div class="card-body">
+                  <h5 class="card-title">Farmacia: {{ item.nombreFarmacia }}</h5>
+                  <p>Producto más barato</p>
+                  <button class="btn btn-warning">
+                    {{ item.precio | currency }}
+                  </button>
+                </div>
+              </div>
 
+              <!--Se va a mostrar cuando el índice sea mayor a 0, seran los productos más caros-->
+              <div class="card" style="width: 18rem;" *ngIf="indice != 0">
+                <div class="card-body">
+                  <h5 class="card-title">Farmacia: {{ item.nombreFarmacia }}</h5>
+                  <p>Precio sugerido</p>
+                  <button class="btn btn-primary">
+                    {{ item.precio | currency }}
+                  </button>
+                  
         </div>
     </div>
 </div>
+

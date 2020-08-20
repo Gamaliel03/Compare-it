@@ -33,7 +33,7 @@ export class BusquedaComponent implements OnInit {
 
   ngOnInit(): void {
    this.busqueda = this.rutaActual.snapshot.params.medicamento;
-
+   this.detalles = new Array<Detalle>();
    this.firestoreService.obtenerFarmacias().subscribe((response)=>{
      this.farmacias = new Array<Farmacia>();
 
@@ -44,7 +44,7 @@ export class BusquedaComponent implements OnInit {
        })
      })
 
-     this.detalles = new Array<Detalle>();
+     
 
      this.farmacias.forEach((farmacia)=>{
        this.firestoreService.obtenerMedicamentosPorFarmacia(farmacia.docId).subscribe((response)=>{
@@ -61,7 +61,9 @@ export class BusquedaComponent implements OnInit {
         })
        })
      })
-
+     console.log("detalles");
+     
+     console.log(this.detalles.length);
    })
   }
 
