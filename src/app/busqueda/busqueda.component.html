@@ -1,5 +1,11 @@
+<div class="d-flex justify-content-center" style="margin: 15em; " *ngIf="isLoading == true">
+    <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+  
 <!--Aparecera cuando no se encuentren resultados-->
-<div class="container mt-3" *ngIf="detalles.length < 1">
+<div class="container mt-3 contenedor" *ngIf="detalles.length < 1 && isLoading == false">
     <div class="row">
         <div class="col-sm-4" style="text-align: center;">
             <div class="col-sm-12">
@@ -11,7 +17,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8 contenedor">
             <img src="assets/Vacionuevo.jpg"
              alt="Imagen cuando el producto no se encuentre" style="width: 70%; height: auto;">
         </div>
@@ -19,7 +25,7 @@
 </div>
 
 <!-- Aparecerá si encuentra resultados -->
-<div class="container mt-3" *ngIf="detalles.length > 0">
+<div class="container mt-3" *ngIf="detalles.length > 0 && isLoading == false">
     <h2>{{ busqueda }}</h2>
     <h4>Precios</h4>
     <div class="alert alert-info" role="alert">
@@ -27,10 +33,11 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-3" *ngFor="let item of detalles; let indice = index">
+        <div class="col-sm-3 contenedor" *ngFor="let item of detalles; let indice = index">
            
         <!--Se va a mostrar cuando el índice sea 0, es decir será el producto más barato-->
-            <div class="card" style="width: 18rem;" *ngIf="indice == 0">
+            <div class="card" style="width: 16rem; box-shadow: 2px 2px 10px #656;" 
+            *ngIf="indice == 0">
                 <div class="card-body">
                   <h5 class="card-title">Farmacia: {{ item.nombreFarmacia }}</h5>
                   <p>Producto más barato</p>
@@ -41,7 +48,7 @@
               </div>
 
               <!--Se va a mostrar cuando el índice sea mayor a 0, seran los productos más caros-->
-              <div class="card" style="width: 18rem;" *ngIf="indice != 0">
+              <div class="card" style="width: 16rem;" *ngIf="indice != 0">
                 <div class="card-body">
                   <h5 class="card-title">Farmacia: {{ item.nombreFarmacia }}</h5>
                   <p>Precio sugerido</p>

@@ -25,6 +25,7 @@ export class BusquedaComponent implements OnInit {
   public detalles: Array<Detalle>;
   
   public busqueda: string
+  public isLoading: boolean = false;
 
   constructor(
     public firestoreService: FirebaseService,
@@ -32,9 +33,13 @@ export class BusquedaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.isLoading = true
    this.busqueda = this.rutaActual.snapshot.params.medicamento;
+
    this.detalles = new Array<Detalle>();
    this.firestoreService.obtenerFarmacias().subscribe((response)=>{
+
      this.farmacias = new Array<Farmacia>();
 
      response.forEach((item)=>{
@@ -61,6 +66,7 @@ export class BusquedaComponent implements OnInit {
         })
        })
      })
+     this.isLoading = false;
      console.log("detalles");
      
      console.log(this.detalles.length);
