@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Farmacia } from '../models/farmacia';
 import { FirebaseService } from '../services/firebase.service';
+import { ParamsService } from '../services/params.service';
 
 class Detalle{
   nombreFarmacia: string;
@@ -29,7 +30,8 @@ export class BusquedaComponent implements OnInit {
 
   constructor(
     public firestoreService: FirebaseService,
-    private rutaActual: ActivatedRoute
+    private rutaActual: ActivatedRoute,
+    private param: ParamsService
   ) { }
 
   ngOnInit(): void {
@@ -69,8 +71,19 @@ export class BusquedaComponent implements OnInit {
      this.isLoading = false;
      console.log("detalles");
      
-     console.log(this.detalles.length);
+     console.log(this.detalles);
+
+
    })
+
+   var parametro = this.param.getData();
+   console.log(parametro);
+
+   this.firestoreService.actualizarBusqueda(parametro['id'], {
+     'nombreMedicamento': parametro['nombre'],
+     'busquedas': parametro['cantidad'] + 1
+   })
+
   }
 
 }

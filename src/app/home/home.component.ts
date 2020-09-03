@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ export class HomeComponent implements OnInit {
   formularioBuscar: FormGroup;
 
   constructor(
-    private fbBusqueda: FormBuilder
+    private fbBusqueda: FormBuilder,
+    public firestoreService: FirebaseService
   ) { }
 
   ngOnInit(): void {
@@ -21,4 +23,8 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  buscar(){
+    this.firestoreService.getMedicamentoID(this.formularioBuscar.value.medicamento)
+  }
 }
+
