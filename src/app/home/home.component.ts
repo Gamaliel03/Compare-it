@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
   formularioBuscar: FormGroup;
 
   constructor(
+    public router: Router,
     private fbBusqueda: FormBuilder,
     public firestoreService: FirebaseService
   ) { }
@@ -24,7 +26,11 @@ export class HomeComponent implements OnInit {
   }
 
   buscar(){
-    this.firestoreService.getMedicamentoID(this.formularioBuscar.value.medicamento)
+    var docId = this.firestoreService.getMedicamentoID(this.formularioBuscar.value.medicamento);
+    if (docId == null) {
+      this.router.navigate(['/busqueda', this.formularioBuscar.value.medicamento]);
+    }
+    
   }
 }
 

@@ -10,7 +10,7 @@
                         type="search" placeholder="Busca tu medicamento" aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" 
                         [disabled]="!formularioBuscar.valid"
-                        type="submit" [routerLink]="['/busqueda', formularioBuscar.value.medicamento]">
+                        type="submit" (click)="buscar()">
                             Buscar 
                         </button>               
                     </div>
