@@ -26,10 +26,8 @@ export class HomeComponent implements OnInit {
   }
 
   buscar(){
-    var docId = this.firestoreService.getMedicamentoID(this.formularioBuscar.value.medicamento);
-    if (docId == null) {
-      this.router.navigate(['/busqueda', this.formularioBuscar.value.medicamento]);
-    }
+     this.firestoreService.getMedicamentoID(this.formularioBuscar.value.medicamento);
+    
     
   }
 }

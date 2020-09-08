@@ -15,4 +15,7 @@ export class ParamsService {
   public getData() : any{
     return this.algo;
   }
+  public clean(){
+    this.algo = null
+  }
 }

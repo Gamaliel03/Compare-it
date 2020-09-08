@@ -36,6 +36,7 @@ export class FirebaseService {
 
   public getMedicamentoID(nombreMedicamento: String){
     this.fireStore.firestore.collection('medicamentos') .onSnapshot((items)=>{
+     this.param.clean()
       items.forEach((x)=>{
         if ((x.data()['nombreMedicamento']as string).toLowerCase() == nombreMedicamento.toLowerCase()) {
           this.param.setData({
@@ -44,7 +45,8 @@ export class FirebaseService {
             'cantidad' :x.data()['busquedas']
           })
           this.router.navigate(['/busqueda', x.data()['nombreMedicamento']]);
-          return x.id;
+        }else{
+          this.router.navigate(['/busqueda', nombreMedicamento]);
         }
       })
     });
