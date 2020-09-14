@@ -19,7 +19,10 @@ export class FarmaciasComponent implements OnInit {
         this.listaFarmacias.push(
           { 
             docId: farmacia.payload.doc.id,
-             nombreFarmacia: farmacia.payload.doc.data()['nombreFarmacia']
+             nombreFarmacia: farmacia.payload.doc.data()['nombreFarmacia'],
+             telefono: farmacia.payload.doc.data()['telefono'],
+             direccion: farmacia.payload.doc.data()['direccion'],
+
           }
           )
       })

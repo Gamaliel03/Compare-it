@@ -48,8 +48,10 @@ export class BusquedaComponent implements OnInit {
       response.forEach((item)=>{
         this.farmacias.push({
           docId: item.payload.doc.id,
-          nombreFarmacia: item.payload.doc.data()['nombreFarmacia']
-        })
+          nombreFarmacia: item.payload.doc.data()['nombreFarmacia'],
+          telefono: item.payload.doc.data()['telefono'],
+             direccion: item.payload.doc.data()['direccion'],
+        });
       })
  
       
